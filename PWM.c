@@ -26,7 +26,7 @@ int main(void)
     acumulador_total++;
     if (acumulador_total == 1000)
     {
-      pwm = acumulador_1 / acumulador_total;
+      pwm = 100*(acumulador_1 / acumulador_total); //EDIT: imprime em %
       acumulador_1 = 0;
       acumulador_total = 0;
       printf ("pwm = %f", pwm);
