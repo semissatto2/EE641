@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <wiringPi>
+#include <math.h>
 
 #define LED 0
 #define ENTRADA 2
@@ -8,8 +9,8 @@ int main(void)
 {
   printf ("Setup... ");
   int leitura_digital = 2;
-  int acumulador_1 = 0;
-  int acumulador_total = 0;
+  float acumulador_1 = 0;
+  float acumulador_total = 0;
   float pwm = 0;
   wiriginPiSetup()
   pinMode(LED, OUTPUT);
@@ -24,9 +25,15 @@ int main(void)
       acumulador_1 ++;
     }
     acumulador_total++;
+    
     if (acumulador_total == 1000)
     {
-      pwm = 100*(acumulador_1 / acumulador_total); //EDIT: imprime em %
+     printf ("\n");
+    }
+    
+    if (acumulador_total == 1000)
+    {
+      pwm = 5*(acumulador_1 / acumulador_total); 
       acumulador_1 = 0;
       acumulador_total = 0;
       printf ("pwm = %f", pwm);
